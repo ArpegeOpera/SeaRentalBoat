@@ -22,7 +22,11 @@ document.addEventListener('DOMContentLoaded', function() {
     link.addEventListener('click', function(e) {
       const href = this.getAttribute('href');
       if (href && href.startsWith('#')) {
-        const target = document.querySelector(href);
+        let target = document.querySelector(href);
+        // Fix per Gallery: se non trova l'id, cerca la sezione con aria-labelledby=gallery-title
+        if (!target && href === '#gallery') {
+          target = document.querySelector('[aria-labelledby="gallery-title"]');
+        }
         if (target) {
           e.preventDefault();
           target.scrollIntoView({ behavior: 'smooth', block: 'start' });
@@ -35,4 +39,25 @@ document.addEventListener('DOMContentLoaded', function() {
       }
     });
   });
+
+  // Mostra tutte le sezioni (fallback se IntersectionObserver manca)
+  function showSections() {
+    document.querySelectorAll('.section').forEach(section => {
+      section.classList.add('visible');
+    });
+  }
+
+  if ('IntersectionObserver' in window) {
+    const sections = document.querySelectorAll('.section');
+    const observer = new window.IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+        }
+      });
+    }, { threshold: 0.15 });
+    sections.forEach(section => observer.observe(section));
+  } else {
+    showSections();
+  }
 }); 

@@ -1,4 +1,21 @@
 document.addEventListener('DOMContentLoaded', function() {
+  // Hamburger menu toggle
+  const hamburger = document.getElementById('hamburger');
+  const navLinksDiv = document.getElementById('navLinks');
+  if (hamburger && navLinksDiv) {
+    hamburger.addEventListener('click', function() {
+      const isOpen = navLinksDiv.classList.toggle('open');
+      hamburger.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
+    });
+    // Accessibilità: apri/chiudi con invio/space
+    hamburger.addEventListener('keydown', function(e) {
+      if (e.key === 'Enter' || e.key === ' ') {
+        const isOpen = navLinksDiv.classList.toggle('open');
+        hamburger.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
+      }
+    });
+  }
+
   // Smooth scroll per i link del menu
   const navLinks = document.querySelectorAll('.nav-links a');
   navLinks.forEach(link => {
@@ -10,10 +27,8 @@ document.addEventListener('DOMContentLoaded', function() {
           e.preventDefault();
           target.scrollIntoView({ behavior: 'smooth', block: 'start' });
           // Chiudi hamburger menu se aperto
-          const navLinksDiv = document.getElementById('navLinks');
           if (navLinksDiv.classList.contains('open')) {
             navLinksDiv.classList.remove('open');
-            const hamburger = document.getElementById('hamburger');
             if (hamburger) hamburger.setAttribute('aria-expanded', 'false');
           }
         }

@@ -2,201 +2,156 @@
 <html lang="it">
 <head>
   <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Sea Rental Boat di D.A. - Noleggio SUP Cagliari</title>
+  <title>Sea Rental Boat di D.A. - Noleggio SUP Poetto Quartu</title>
+
+  <!-- SEO Meta Tags -->
+  <meta name="description" content="Sea Rental Boat di D.A. offre noleggio SUP sul Lungomare Poetto di Quartu Sant'Elena. Prenota la tua avventura in SUP con tariffe trasparenti e supporto per principianti ed esperti.">
+  <meta name="keywords" content="noleggio SUP, Stand Up Paddle, Poetto, Quartu Sant'Elena, Sardegna, sport acquatici, Sea Rental Boat, Controvento">
+  <meta name="author" content="Sea Rental Boat di D.A.">
+  <meta name="robots" content="index, follow">
+  <link rel="canonical" href="https://controventoquartu.com">
+
+  <!-- Open Graph / Facebook -->
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Sea Rental Boat di D.A. - Noleggio SUP Poetto Quartu">
+  <meta property="og:description" content="Sea Rental Boat di D.A. offre noleggio SUP sul Lungomare Poetto di Quartu Sant'Elena. Prenota la tua avventura in SUP con tariffe trasparenti e supporto per principianti ed esperti.">
+  <meta property="og:url" content="https://controventoquartu.com">
+  <meta property="og:image" content="https://controventoquartu.com/og-image.jpg">
+  <meta property="og:site_name" content="Sea Rental Boat di D.A.">
+  <meta property="og:locale" content="it_IT">
+
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Sea Rental Boat di D.A. - Noleggio SUP Poetto Quartu">
+  <meta name="twitter:description" content="Prenota il tuo SUP sul Lungomare Poetto: Sea Rental Boat di D.A. ti offre tariffe chiare e supporto dedicato.">
+  <meta name="twitter:image" content="https://controventoquartu.com/twitter-card.jpg">
+
+  <!-- JSON-LD Structured Data -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "SportsActivityLocation",
+    "name": "Sea Rental Boat di D.A.",
+    "image": ["https://controventoquartu.com/logo.png","https://controventoquartu.com/IMG-20250626-WA0027.jpg"],
+    "@id": "https://controventoquartu.com",
+    "url": "https://controventoquartu.com",
+    "telephone": "+393516521071",
+    "address": {
+      "@type": "PostalAddress",
+      "streetAddress": "Viale Golfo di Quartu, Lungomare Poetto",
+      "addressLocality": "Quartu Sant'Elena",
+      "postalCode": "09045",
+      "addressRegion": "CA",
+      "addressCountry": "IT"
+    },
+    "geo": {
+      "@type": "GeoCoordinates",
+      "latitude": 39.2277179,
+      "longitude": 9.2172071
+    },
+    "openingHoursSpecification": {
+      "@type": "OpeningHoursSpecification",
+      "dayOfWeek": ["Monday","Tuesday","Wednesday","Thursday","Friday","Saturday","Sunday"],
+      "opens": "09:00",
+      "closes": "19:00"
+    }
+  }
+  </script>
+
+  <!-- Fonts & Styles -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
-  <nav class="navbar">
-    <img src="logo.png" alt="Logo Sea Rental Boat di D.A." class="logo">
-    <div class="nav-links" id="navLinks">
-      <a href="#home">Home</a>
-      <a href="#servizi">Servizi</a>
-      <a href="#prezzi">Prezzi</a>
-      <a href="#gallery">Gallery</a>
-      <a href="#contatti">Contatti</a>
-    </div>
-    <div class="hamburger" id="hamburger" aria-label="Apri menu" tabindex="0">
-      <span></span>
-      <span></span>
-      <span></span>
-    </div>
-  </nav>
-  <section class="hero-full" id="home">
-    <img src="IMG-20250626-WA0027.jpg" alt="Sup sul mare Poetto" class="hero-bg">
-    <div class="hero-overlay"></div>
-    <div class="hero-content">
-      <div class="hero-sub">LE TUE AVVENTURE SUL MARE</div>
-      <div class="hero-title-main">NOLEGGIO SUP<br>POETTO QUARTU</div>
-      <a href="https://wa.me/393516521071" class="cta-btn">Prenota ora su WhatsApp</a>
-    </div>
-  </section>
+  <header>
+    <nav class="navbar" aria-label="Navigazione principale">
+      <a href="index.html" class="logo-link">
+        <img src="logo.png" alt="Logo Sea Rental Boat di D.A." class="logo" onerror="this.style.display='none'">
+      </a>
+      <button class="hamburger" id="hamburger" aria-expanded="false" aria-controls="navLinks" aria-label="Apri menu">
+        <span></span><span></span><span></span>
+      </button>
+      <div class="nav-links" id="navLinks">
+        <a href="#home">Home</a>
+        <a href="#servizi">Servizi</a>
+        <a href="#prezzi">Prezzi</a>
+        <a href="#gallery">Gallery</a>
+        <a href="#contatti">Contatti</a>
+      </div>
+    </nav>
+    <section class="hero-full" id="home">
+      <img src="IMG-20250626-WA0027.jpg" alt="Stand Up Paddle sul mare al Poetto Quartu" class="hero-bg" loading="lazy">
+      <div class="hero-overlay"></div>
+      <div class="hero-content">
+        <p class="hero-sub">LE TUE AVVENTURE SUL MARE</p>
+        <h1 class="hero-title-main">Noleggio SUP Poetto Quartu</h1>
+        <a href="https://wa.me/393516521071" class="cta-btn">Prenota ora su WhatsApp</a>
+      </div>
+    </section>
+  </header>
   <main>
     <section class="section" id="servizi">
-      <div class="section-title">Cosa Offriamo</div>
-      <div class="services-list">
-        <div class="service">Noleggio SUP (Stand Up Paddle)</div>
-        <div class="service">Assistenza e consigli per principianti</div>
-        <div class="service">Posizione ideale sul lungomare Poetto Quartu</div>
-        <div class="service">Prenotazione facile via WhatsApp</div>
-      </div>
-      <div class="section-title gallery-title" id="gallery">Galleria</div>
-      <div class="carousel" id="carousel">
-        <img src="IMG-20250626-WA0021.jpg" alt="Sup in acqua" id="carouselImg">
-        <div class="carousel-dots" id="carouselDots"></div>
+      <h2 class="section-title">Cosa Offriamo</h2>
+      <ul class="services-list">
+        <li class="service">Noleggio SUP (Stand Up Paddle)</li>
+        <li class="service">Assistenza e consigli per principianti</li>
+        <li class="service">Posizione ideale sul Lungomare Poetto</li>
+        <li class="service">Prenotazione facile via WhatsApp</li>
+      </ul>
+    </section>
+    <section class="section" aria-labelledby="gallery-title">
+      <h2 id="gallery-title" class="section-title">Galleria</h2>
+      <div class="carousel" id="carousel" role="region" aria-roledescription="carousel">
+        <img src="IMG-20250626-WA0021.jpg" alt="Sup in acqua" id="carouselImg" loading="lazy">
+        <div class="carousel-dots" id="carouselDots" role="tablist"></div>
       </div>
     </section>
     <section class="section" id="prezzi">
-      <div class="section-title">Prezzi</div>
+      <h2 class="section-title">Prezzi</h2>
       <table class="prices-table">
-        <tr>
-          <th>Durata</th>
-          <th>Prezzo</th>
-        </tr>
-        <tr>
-          <td>1 ora</td>
-          <td>€ XX</td>
-        </tr>
-        <tr>
-          <td>2 ore</td>
-          <td>€ XX</td>
-        </tr>
-        <tr>
-          <td>Mezza giornata</td>
-          <td>€ XX</td>
-        </tr>
-        <tr>
-          <td>Giornata intera</td>
-          <td>€ XX</td>
-        </tr>
+        <caption class="sr-only">Tabella prezzi noleggio SUP</caption>
+        <thead>
+          <tr><th>Durata</th><th>Prezzo</th></tr>
+        </thead>
+        <tbody>
+          <tr><td>1 ora</td><td>€15</td></tr>
+          <tr><td>2 ore</td><td>€25</td></tr>
+          <tr><td>Mezza giornata</td><td>€35</td></tr>
+          <tr><td>Giornata intera</td><td>€60</td></tr>
+        </tbody>
       </table>
-      <div style="text-align:center; color:var(--text-gray); font-size:0.98rem;">Contattaci per offerte personalizzate e gruppi!</div>
+      <p class="note">Contattaci per offerte personalizzate e gruppi!</p>
     </section>
     <section class="section" id="contatti">
-      <div class="section-title">Contatti</div>
+      <h2 class="section-title">Contatti</h2>
       <div class="contact-section-flex">
         <div class="contact-info-col">
-          <div class="contact-row">🏖️ Stabilimento Controvento</div>
-          <div class="contact-row"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" width="22" height="22"><path d="M4 4h16v16H4z" fill="none"/><path d="M20 6v12H4V6h16m0-2H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm-2 3l-6 5-6-5"/></svg> <a href="mailto:info@controventoquartu.com">info@controventoquartu.com</a></div>
-          <div class="contact-row address-row"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"><path d="M2 20h20v2H2z"/><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/></svg> Viale Golfo di Quartu, 09045 Quartu Sant'Elena CA</div>
-          <div class="contact-row"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"><path d="M6.62 10.79a15.05 15.05 0 006.59 6.59l2.2-2.2a1 1 0 011.11-.21 11.36 11.36 0 003.54.57 1 1 0 011 1v3.61a1 1 0 01-1 1A17 17 0 013 5a1 1 0 011-1h3.61a1 1 0 011 1 11.36 11.36 0 00.57 3.54 1 1 0 01-.21 1.11l-2.2 2.2z"/></svg> <a href="tel:+393516521071">+39 351 652 1071</a></div>
+          <p class="contact-row" aria-hidden="true">🏖️ Stabilimento Controvento</p>
+          <p class="contact-row"><strong>Email:</strong> <a href="mailto:info@controventoquartu.com">info@controventoquartu.com</a></p>
+          <p class="contact-row"><strong>Indirizzo:</strong> Viale Golfo di Quartu, 09045 Quartu Sant'Elena (CA)</p>
+          <p class="contact-row"><strong>Telefono:</strong> <a href="tel:+393516521071">+39 351 652 1071</a></p>
           <div class="contact-actions">
-            <a href="tel:+393516521071" aria-label="Chiama"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" width="20" height="20"><path d="M6.62 10.79a15.05 15.05 0 006.59 6.59l2.2-2.2a1 1 0 011.11-.21 11.36 11.36 0 003.54.57 1 1 0 011 1v3.61a1 1 0 01-1 1A17 17 0 013 5a1 1 0 011-1h3.61a1 1 0 011 1 11.36 11.36 0 00.57 3.54 1 1 0 01-.21 1.11l-2.2 2.2z"/></svg> Chiama</a>
-            <a href="https://wa.me/393516521071" aria-label="WhatsApp"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" width="20" height="20"><circle cx="16" cy="16" r="16" fill="#25D366"/><path fill="#fff" d="M23.472 19.339c-.355-.177-2.096-1.034-2.42-1.153-.324-.118-.56-.177-.797.177-.237.355-.914 1.153-1.122 1.39-.207.237-.414.266-.769.089-.355-.178-1.5-.553-2.857-1.763-1.056-.943-1.77-2.104-1.98-2.459-.207-.355-.022-.546.155-.723.159-.158.355-.414.532-.62.178-.207.237-.355.355-.592.118-.237.06-.444-.03-.62-.089-.177-.797-1.92-1.092-2.63-.287-.691-.58-.597-.797-.608-.207-.009-.444-.011-.68-.011-.237 0-.62.089-.944.444-.324.355-1.24 1.211-1.24 2.955 0 1.744 1.27 3.429 1.447 3.666.178.237 2.5 3.82 6.063 5.213.849.366 1.51.584 2.027.747.851.271 1.627.233 2.24.142.683-.102 2.096-.857 2.393-1.686.296-.83.296-1.541.207-1.686-.089-.146-.324-.237-.68-.414-.68-.414z"/></svg> WhatsApp</a>
-            <a href="mailto:info@controventoquartu.com" aria-label="Email"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" width="20" height="20"><path d="M20 4H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 2v.01L12 13 4 6.01V6h16zm0 12H4V8.99l8 6.99 8-6.99V18z"/></svg> Email</a>
+            <a href="tel:+393516521071" aria-label="Chiama">Chiama</a>
+            <a href="https://wa.me/393516521071" aria-label="WhatsApp">WhatsApp</a>
+            <a href="mailto:info@controventoquartu.com" aria-label="Invia email">Email</a>
           </div>
         </div>
-        <div class="contact-map-col">
+        <div class="contact-map-col" role="region" aria-label="Mappa della posizione">
           <div class="map-responsive">
-            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d1667.5926949191887!2d9.217207057449194!3d39.22771795191738!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x12e0cbab97dd43e5%3A0x2baf357891368390!2sControvento!5e0!3m2!1sit!2sit!4v1750926480615!5m2!1sit!2sit" width="100%" height="100%" style="border:0; min-height:220px;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d1667.5926949191887!2d9.217207057449194!3d39.22771795191738!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x12e0cbab97dd43e5%3A0x2baf357891368390!2sControvento!5e0!3m2!1sit!2sit!4v1750926480615!5m2!1sit!2sit" width="100%" height="100%" style="border:0;" allowfullscreen loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
           </div>
         </div>
       </div>
     </section>
   </main>
   <footer>
-    &copy; 2025 Sea Rental Boat di D.A. - Stabilimento Controvento | Powered by Riccardo Antonio Vitale
+    <p>&copy; 2025 Sea Rental Boat di D.A. - Stabilimento Controvento | Powered by Riccardo Antonio Vitale</p>
   </footer>
-  <script>
-    // Hamburger menu toggle
-    const hamburger = document.getElementById('hamburger');
-    const navLinks = document.getElementById('navLinks');
-    hamburger.addEventListener('click', () => {
-      navLinks.classList.toggle('open');
-    });
-    // Chiudi menu al click su link (mobile UX)
-    navLinks.querySelectorAll('a').forEach(link => {
-      link.addEventListener('click', () => {
-        navLinks.classList.remove('open');
-      });
-    });
-    // Accessibilità: apri/chiudi con invio/space
-    hamburger.addEventListener('keydown', (e) => {
-      if (e.key === 'Enter' || e.key === ' ') {
-        navLinks.classList.toggle('open');
-      }
-    });
-    // Carosello immagini mobile
-    const carouselImgs = [
-      {src: 'IMG-20250626-WA0021.jpg', alt: 'Sup in acqua'},
-      {src: 'IMG-20250626-WA0023.jpg', alt: 'Vista mare sup'},
-      {src: 'IMG-20250626-WA0027.jpg', alt: 'Sup Poetto'},
-      {src: 'IMG-20250626-WA0011.jpg', alt: 'Sup gruppo'},
-      {src: 'Immagine WhatsApp 2025-06-25 ore 20.33.58_6d3e3227.jpg', alt: 'Sup WhatsApp 1'},
-      {src: 'Immagine WhatsApp 2025-06-25 ore 20.33.57_8478de64.jpg', alt: 'Sup WhatsApp 2'},
-      {src: 'Immagine WhatsApp 2025-06-25 ore 20.33.57_e219b93b.jpg', alt: 'Sup WhatsApp 3'},
-      {src: 'Immagine WhatsApp 2025-06-25 ore 20.33.56_5753bbcb.jpg', alt: 'Sup WhatsApp 4'},
-      {src: 'Immagine WhatsApp 2025-06-25 ore 20.33.56_80fe11b1.jpg', alt: 'Sup WhatsApp 5'}
-    ];
-    const carousel = document.getElementById('carousel');
-    if (carousel) {
-      const carouselImg = document.getElementById('carouselImg');
-      const dots = document.getElementById('carouselDots');
-      let idx = 0;
-      function showImg(i) {
-        idx = i;
-        carouselImg.classList.add('fade');
-        setTimeout(() => {
-          carouselImg.src = carouselImgs[i].src;
-          carouselImg.alt = carouselImgs[i].alt;
-          carouselImg.classList.remove('fade');
-        }, 200);
-        Array.from(dots.children).forEach((d, j) => d.classList.toggle('active', j === i));
-      }
-      // Dots
-      dots.innerHTML = '';
-      carouselImgs.forEach((img, i) => {
-        const dot = document.createElement('div');
-        dot.className = 'carousel-dot' + (i === 0 ? ' active' : '');
-        dot.onclick = () => showImg(i);
-        dots.appendChild(dot);
-      });
-      showImg(0);
-      // Touch swipe support
-      let startX = null;
-      carouselImg.addEventListener('touchstart', (e) => {
-        startX = e.touches[0].clientX;
-      });
-      carouselImg.addEventListener('touchend', (e) => {
-        if (startX === null) return;
-        let endX = e.changedTouches[0].clientX;
-        if (endX - startX > 40) showImg((idx - 1 + carouselImgs.length) % carouselImgs.length);
-        else if (startX - endX > 40) showImg((idx + 1) % carouselImgs.length);
-        startX = null;
-      });
-      // Mouse drag/scroll support
-      let dragStartX = null;
-      let dragging = false;
-      carouselImg.addEventListener('mousedown', (e) => {
-        dragStartX = e.clientX;
-        dragging = true;
-      });
-      document.addEventListener('mouseup', (e) => {
-        if (!dragging || dragStartX === null) return;
-        let dragEndX = e.clientX;
-        if (dragEndX - dragStartX > 40) showImg((idx - 1 + carouselImgs.length) % carouselImgs.length);
-        else if (dragStartX - dragEndX > 40) showImg((idx + 1) % carouselImgs.length);
-        dragging = false;
-        dragStartX = null;
-      });
-      carouselImg.addEventListener('mousemove', (e) => {
-        // Prevent unwanted selection while dragging
-        if (dragging) e.preventDefault();
-      });
-    }
-    // Fade-in animation per le sezioni
-    document.addEventListener('DOMContentLoaded', function() {
-      const sections = document.querySelectorAll('.section');
-      const observer = new IntersectionObserver((entries) => {
-        entries.forEach(entry => {
-          if (entry.isIntersecting) {
-            entry.target.classList.add('visible');
-          }
-        });
-      }, { threshold: 0.15 });
-      sections.forEach(section => observer.observe(section));
-    });
-  </script>
+  <script src="script.js" defer></script>
 </body>
 </html>
+

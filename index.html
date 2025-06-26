@@ -1,0 +1,722 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Sea Rental Boat di D.A. - Noleggio SUP Cagliari</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --main-blue: #4db6e6;
+      --accent-blue: #1976d2;
+      --white: #fff;
+      --black: #222;
+      --gray: #f5f7fa;
+      --text-gray: #444;
+      --border: #e0e0e0;
+      --overlay: rgba(20,40,60,0.45);
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: 'Poppins', Arial, sans-serif;
+      background: var(--gray);
+      color: var(--text-gray);
+      min-height: 100vh;
+    }
+    .navbar {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 100;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 1.1rem 2.5vw 1.1rem 2.5vw;
+      background: rgba(255,255,255,0.12);
+      backdrop-filter: blur(6px);
+    }
+    .navbar .logo {
+      max-width: 60px;
+      border-radius: 8px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.04);
+      transition: max-width 0.2s;
+    }
+    .navbar .nav-links {
+      display: flex;
+      gap: 2.2rem;
+      align-items: center;
+      transition: all 0.3s;
+    }
+    .navbar .nav-links a {
+      color: #fff;
+      text-decoration: none;
+      font-weight: 600;
+      font-size: 1.05rem;
+      letter-spacing: 1px;
+      transition: color 0.2s;
+      text-shadow: 0 2px 8px rgba(0,0,0,0.18);
+      padding: 0.3em 0.2em;
+    }
+    .navbar .nav-links a:hover {
+      color: var(--main-blue);
+    }
+    /* Hamburger styles */
+    .navbar .hamburger {
+      display: none;
+      flex-direction: column;
+      justify-content: center;
+      width: 36px;
+      height: 36px;
+      cursor: pointer;
+      z-index: 110;
+    }
+    .navbar .hamburger span {
+      height: 4px;
+      width: 100%;
+      background: #fff;
+      margin: 5px 0;
+      border-radius: 2px;
+      transition: all 0.3s;
+      display: block;
+    }
+    .hero-full {
+      position: relative;
+      width: 100vw;
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: #222;
+      overflow: hidden;
+    }
+    .hero-bg {
+      position: absolute;
+      top: 0; left: 0; width: 100%; height: 100%;
+      object-fit: cover;
+      z-index: 1;
+      filter: brightness(0.85) saturate(1.1);
+    }
+    .hero-overlay {
+      position: absolute;
+      top: 0; left: 0; width: 100%; height: 100%;
+      background: var(--overlay);
+      z-index: 2;
+    }
+    .hero-content {
+      position: relative;
+      z-index: 3;
+      width: 100%;
+      text-align: center;
+      color: #fff;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      padding: 0 1.5rem;
+    }
+    .hero-title-main {
+      font-size: 3.2rem;
+      font-weight: 700;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      margin-bottom: 1.1rem;
+      text-shadow: 0 4px 24px rgba(0,0,0,0.25);
+    }
+    .hero-sub {
+      font-size: 1.2rem;
+      font-weight: 400;
+      margin-bottom: 0.2rem;
+      text-shadow: 0 2px 8px rgba(0,0,0,0.18);
+    }
+    .cta-btn {
+      background: var(--main-blue);
+      color: var(--white);
+      font-size: 1.2rem;
+      padding: 0.9rem 2.5rem;
+      border: none;
+      border-radius: 6px;
+      cursor: pointer;
+      font-weight: 600;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+      transition: background 0.2s;
+      margin-bottom: 1.5rem;
+      text-decoration: none;
+      display: inline-block;
+    }
+    .cta-btn:hover {
+      background: var(--accent-blue);
+    }
+    main {
+      margin-top: 0;
+      background: var(--gray);
+    }
+    .section {
+      padding: 2.5rem 1rem 1.5rem 1rem;
+      max-width: 900px;
+      margin: 0 auto;
+      text-align: center;
+      font-style: bold;
+      opacity: 0;
+      transform: translateY(30px);
+      transition: opacity 0.7s cubic-bezier(.4,0,.2,1), transform 0.7s cubic-bezier(.4,0,.2,1);
+    }
+    .section.visible {
+      opacity: 1;
+      transform: none;
+    }
+    .section-title {
+      font-size: 1.4rem;
+      color: var(--accent-blue);
+      margin-bottom: 1.2rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      text-align: center;
+    }
+    .services-list {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1.5rem;
+      justify-content: center;
+      margin-bottom: 1.5rem;
+      text-align: left;
+    }
+    .service {
+      background: var(--white);
+      border-radius: 10px;
+      border: 1px solid var(--border);
+      padding: 1.1rem 1.3rem;
+      min-width: 200px;
+      max-width: 300px;
+      text-align: center;
+      font-size: 1rem;
+      font-weight: 500;
+      color: var(--text-gray);
+      margin: 0 auto;
+    }
+    .prices-table {
+      width: 100%;
+      max-width: 500px;
+      margin: 0 auto 1.5rem auto;
+      border-collapse: collapse;
+      background: var(--white);
+      border-radius: 10px;
+      overflow: hidden;
+      box-shadow: 0 1px 4px rgba(0,0,0,0.03);
+    }
+    .prices-table th, .prices-table td {
+      padding: 0.9rem 1rem;
+      border-bottom: 1px solid var(--border);
+      text-align: left;
+      font-size: 1rem;
+    }
+    .prices-table th {
+      background: var(--main-blue);
+      color: var(--white);
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+    }
+    .prices-table tr:last-child td {
+      border-bottom: none;
+    }
+    .gallery-flex { display: none !important; }
+    .carousel {
+      display: block;
+      position: relative;
+      width: 100%;
+      max-width: 700px;
+      margin: 0 auto 2.5rem auto;
+      min-height: 180px;
+    }
+    .carousel img {
+      width: 100%;
+      aspect-ratio: 3/2;
+      object-fit: contain;
+      border-radius: 10px;
+      box-shadow: 0 1px 4px rgba(0,0,0,0.04);
+      background: #eee;
+      min-height: 220px;
+      margin-bottom: 0.5rem;
+      max-height: 60vh;
+      transition: max-height 0.2s, opacity 0.5s cubic-bezier(.4,0,.2,1);
+      display: block;
+      background-color: #f5f7fa;
+      opacity: 1;
+    }
+    .carousel img.fade {
+      opacity: 0;
+      transition: opacity 0.5s cubic-bezier(.4,0,.2,1);
+    }
+    .carousel-dots {
+      display: flex;
+      justify-content: center;
+      gap: 0.5rem;
+      margin-top: 0.7rem;
+    }
+    .carousel-dot {
+      width: 10px; height: 10px;
+      border-radius: 50%;
+      background: #bbb;
+      cursor: pointer;
+      transition: background 0.2s;
+    }
+    .carousel-dot.active { background: var(--main-blue); }
+    .contact-info {
+      text-align: center;
+      margin-top: 1.5rem;
+    }
+    .contact-info a {
+      color: var(--accent-blue);
+      text-decoration: none;
+      font-weight: 600;
+    }
+    .contact-info a:hover {
+      text-decoration: underline;
+    }
+    .address {
+      margin-top: 0.7rem;
+      color: var(--text-gray);
+      font-size: 1rem;
+    }
+    footer {
+      background: var(--white);
+      text-align: center;
+      padding: 1rem 0;
+      font-size: 0.95rem;
+      color: var(--text-gray);
+      margin-top: 2rem;
+      border-top: 1px solid var(--border);
+    }
+    @media (max-width: 900px) {
+      .hero-title-main { font-size: 2.1rem; }
+      .navbar .nav-links { gap: 1.2rem; }
+      .carousel {
+        max-width: 100vw;
+        min-width: 0;
+        min-height: 120px;
+      }
+      .carousel img {
+        max-height: 60vh;
+        min-height: 120px;
+      }
+      .section {
+        padding: 1.5rem 0.2rem 1.2rem 0.2rem;
+      }
+      .service {
+        min-width: 120px;
+        max-width: 98vw;
+        font-size: 0.98rem;
+      }
+      .section-title {
+        font-size: 1.1rem;
+      }
+      .contact-row.address-row {
+        text-align: left;
+        font-size: 0.98rem;
+        margin-left: 0.2em;
+      }
+    }
+    @media (max-width: 700px) {
+      .navbar {
+        padding: 0.7rem 2vw;
+      }
+      .navbar .logo {
+        max-width: 38px;
+      }
+      .navbar .nav-links {
+        position: fixed;
+        top: 0; right: 0;
+        height: 100vh;
+        width: 220px;
+        background: rgba(30,40,60,0.98);
+        flex-direction: column;
+        align-items: flex-start;
+        padding: 4.5rem 1.5rem 1.5rem 1.5rem;
+        gap: 1.5rem;
+        transform: translateX(100%);
+        box-shadow: -2px 0 12px rgba(0,0,0,0.10);
+        transition: transform 0.3s;
+      }
+      .navbar .nav-links.open {
+        transform: translateX(0);
+      }
+      .navbar .hamburger {
+        display: flex;
+      }
+      .gallery-flex { display: none; }
+      .carousel { display: block; }
+      .map-responsive { min-height: 180px; }
+    }
+    @media (max-width: 600px) {
+      .hero-title-main { font-size: 1.2rem; }
+      .section-title { font-size: 1rem; }
+      .service { min-width: 120px; padding: 0.8rem; font-size: 0.95rem; }
+      .prices-table th, .prices-table td { padding: 0.6rem 0.5rem; font-size: 0.95rem; }
+      .carousel {
+        max-width: 100vw;
+      }
+      .carousel img {
+        max-height: 32vh;
+        min-height: 80px;
+      }
+      .section {
+        padding: 1rem 0.1rem 0.8rem 0.1rem;
+      }
+    }
+    .contact-card {
+      background: var(--white);
+      border-radius: 14px;
+      box-shadow: 0 2px 12px rgba(30,40,60,0.07);
+      padding: 2rem 1.5rem 1.5rem 1.5rem;
+      max-width: 420px;
+      margin: 0 auto 2rem auto;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 1.1rem;
+    }
+    .contact-row {
+      display: flex;
+      align-items: center;
+      gap: 0.7rem;
+      font-size: 1.08rem;
+      color: var(--text-gray);
+      width: 100%;
+      justify-content: flex-start;
+    }
+    .contact-row svg {
+      width: 22px; height: 22px; color: var(--main-blue);
+      flex-shrink: 0;
+    }
+    .contact-actions {
+      display: flex;
+      gap: 1rem;
+      margin-top: 0.5rem;
+      flex-wrap: wrap;
+      justify-content: center;
+    }
+    .contact-actions a {
+      background: var(--main-blue);
+      color: #fff;
+      padding: 0.6rem 1.2rem;
+      border-radius: 6px;
+      text-decoration: none;
+      font-weight: 600;
+      font-size: 1rem;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      transition: background 0.2s;
+    }
+    .contact-actions a:hover {
+      background: var(--accent-blue);
+    }
+    .map-responsive {
+      width: 100%;
+      max-width: 500px;
+      margin: 1.5rem auto 0 auto;
+      border-radius: 12px;
+      overflow: hidden;
+      box-shadow: 0 2px 12px rgba(30,40,60,0.07);
+      aspect-ratio: 4/3;
+      min-height: 220px;
+    }
+    .section-title.gallery-title {
+      margin-top: 3.5rem;
+      margin-bottom: 1.2rem;
+      font-size: 1.3rem;
+      text-transform: uppercase;
+      color: var(--accent-blue);
+      letter-spacing: 1px;
+      text-align: center;
+      font-weight: 600;
+    }
+    /* Contatti layout desktop/mobile */
+    .contact-section-flex {
+      display: flex;
+      flex-direction: column;
+      gap: 2rem;
+      background: var(--white);
+      border-radius: 14px;
+      box-shadow: 0 2px 12px rgba(30,40,60,0.07);
+      padding: 2rem 1.5rem 1.5rem 1.5rem;
+      max-width: 900px;
+      margin: 0 auto 2rem auto;
+    }
+    .contact-info-col {
+      flex: 1 1 0;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      gap: 1.1rem;
+    }
+    .contact-map-col {
+      flex: 1 1 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .map-responsive {
+      width: 100%;
+      max-width: 400px;
+      min-width: 220px;
+      margin: 0;
+      border-radius: 12px;
+      overflow: hidden;
+      box-shadow: 0 2px 12px rgba(30,40,60,0.07);
+      aspect-ratio: 4/3;
+      min-height: 220px;
+    }
+    @media (min-width: 800px) {
+      .contact-section-flex {
+        flex-direction: row;
+        align-items: stretch;
+        padding: 2.5rem 2.5rem 2.5rem 2.5rem;
+        gap: 2.5rem;
+      }
+      .contact-info-col {
+        max-width: 340px;
+        padding-right: 1.5rem;
+        border-right: 1px solid #f0f0f0;
+      }
+      .contact-map-col {
+        justify-content: flex-end;
+        padding-left: 1.5rem;
+      }
+      .map-responsive {
+        max-width: 350px;
+        min-width: 220px;
+        min-height: 220px;
+      }
+    }
+    @media (max-width: 799px) {
+      .contact-section-flex {
+        flex-direction: column;
+        padding: 1.5rem 1rem 1.5rem 1rem;
+      }
+      .contact-info-col {
+        border-right: none;
+        padding-right: 0;
+        padding-bottom: 1.5rem;
+      }
+      .contact-map-col {
+        padding-left: 0;
+      }
+      .map-responsive {
+        max-width: 100%;
+        min-width: 120px;
+        min-height: 180px;
+      }
+    }
+    .contact-row.address-row {
+      text-align: left;
+      word-break: break-word;
+      padding-left: 0.2em;
+      margin: 0.2em 0 0.2em 0;
+    }
+    @media (min-width: 901px) {
+      .carousel {
+        max-width: 900px;
+        min-width: 0;
+        min-height: 220px;
+      }
+      .carousel img {
+        max-height: 70vh;
+        min-height: 220px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <nav class="navbar">
+    <img src="logo.png" alt="Logo Sea Rental Boat di D.A." class="logo">
+    <div class="nav-links" id="navLinks">
+      <a href="#home">Home</a>
+      <a href="#servizi">Servizi</a>
+      <a href="#prezzi">Prezzi</a>
+      <a href="#gallery">Gallery</a>
+      <a href="#contatti">Contatti</a>
+    </div>
+    <div class="hamburger" id="hamburger" aria-label="Apri menu" tabindex="0">
+      <span></span>
+      <span></span>
+      <span></span>
+    </div>
+  </nav>
+  <section class="hero-full" id="home">
+    <img src="IMG-20250626-WA0027.jpg" alt="Sup sul mare Poetto" class="hero-bg">
+    <div class="hero-overlay"></div>
+    <div class="hero-content">
+      <div class="hero-sub">LE TUE AVVENTURE SUL MARE</div>
+      <div class="hero-title-main">NOLEGGIO SUP<br>POETTO QUARTU</div>
+      <a href="https://wa.me/393516521071" class="cta-btn">Prenota ora su WhatsApp</a>
+    </div>
+  </section>
+  <main>
+    <section class="section" id="servizi">
+      <div class="section-title">Cosa Offriamo</div>
+      <div class="services-list">
+        <div class="service">Noleggio SUP (Stand Up Paddle)</div>
+        <div class="service">Assistenza e consigli per principianti</div>
+        <div class="service">Posizione ideale sul lungomare Poetto Quartu</div>
+        <div class="service">Prenotazione facile via WhatsApp</div>
+      </div>
+      <div class="section-title gallery-title" id="gallery">Galleria</div>
+      <div class="carousel" id="carousel">
+        <img src="IMG-20250626-WA0021.jpg" alt="Sup in acqua" id="carouselImg">
+        <div class="carousel-dots" id="carouselDots"></div>
+      </div>
+    </section>
+    <section class="section" id="prezzi">
+      <div class="section-title">Prezzi</div>
+      <table class="prices-table">
+        <tr>
+          <th>Durata</th>
+          <th>Prezzo</th>
+        </tr>
+        <tr>
+          <td>1 ora</td>
+          <td>€ XX</td>
+        </tr>
+        <tr>
+          <td>2 ore</td>
+          <td>€ XX</td>
+        </tr>
+        <tr>
+          <td>Mezza giornata</td>
+          <td>€ XX</td>
+        </tr>
+        <tr>
+          <td>Giornata intera</td>
+          <td>€ XX</td>
+        </tr>
+      </table>
+      <div style="text-align:center; color:var(--text-gray); font-size:0.98rem;">Contattaci per offerte personalizzate e gruppi!</div>
+    </section>
+    <section class="section" id="contatti">
+      <div class="section-title">Contatti</div>
+      <div class="contact-section-flex">
+        <div class="contact-info-col">
+          <div class="contact-row">🏖️ Stabilimento Controvento</div>
+          <div class="contact-row"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" width="22" height="22"><path d="M4 4h16v16H4z" fill="none"/><path d="M20 6v12H4V6h16m0-2H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm-2 3l-6 5-6-5"/></svg> <a href="mailto:info@controventoquartu.com">info@controventoquartu.com</a></div>
+          <div class="contact-row address-row"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"><path d="M2 20h20v2H2z"/><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/></svg> Viale Golfo di Quartu, 09045 Quartu Sant'Elena CA</div>
+          <div class="contact-row"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"><path d="M6.62 10.79a15.05 15.05 0 006.59 6.59l2.2-2.2a1 1 0 011.11-.21 11.36 11.36 0 003.54.57 1 1 0 011 1v3.61a1 1 0 01-1 1A17 17 0 013 5a1 1 0 011-1h3.61a1 1 0 011 1 11.36 11.36 0 00.57 3.54 1 1 0 01-.21 1.11l-2.2 2.2z"/></svg> <a href="tel:+393516521071">+39 351 652 1071</a></div>
+          <div class="contact-actions">
+            <a href="tel:+393516521071" aria-label="Chiama"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" width="20" height="20"><path d="M6.62 10.79a15.05 15.05 0 006.59 6.59l2.2-2.2a1 1 0 011.11-.21 11.36 11.36 0 003.54.57 1 1 0 011 1v3.61a1 1 0 01-1 1A17 17 0 013 5a1 1 0 011-1h3.61a1 1 0 011 1 11.36 11.36 0 00.57 3.54 1 1 0 01-.21 1.11l-2.2 2.2z"/></svg> Chiama</a>
+            <a href="https://wa.me/393516521071" aria-label="WhatsApp"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" width="20" height="20"><circle cx="16" cy="16" r="16" fill="#25D366"/><path fill="#fff" d="M23.472 19.339c-.355-.177-2.096-1.034-2.42-1.153-.324-.118-.56-.177-.797.177-.237.355-.914 1.153-1.122 1.39-.207.237-.414.266-.769.089-.355-.178-1.5-.553-2.857-1.763-1.056-.943-1.77-2.104-1.98-2.459-.207-.355-.022-.546.155-.723.159-.158.355-.414.532-.62.178-.207.237-.355.355-.592.118-.237.06-.444-.03-.62-.089-.177-.797-1.92-1.092-2.63-.287-.691-.58-.597-.797-.608-.207-.009-.444-.011-.68-.011-.237 0-.62.089-.944.444-.324.355-1.24 1.211-1.24 2.955 0 1.744 1.27 3.429 1.447 3.666.178.237 2.5 3.82 6.063 5.213.849.366 1.51.584 2.027.747.851.271 1.627.233 2.24.142.683-.102 2.096-.857 2.393-1.686.296-.83.296-1.541.207-1.686-.089-.146-.324-.237-.68-.414-.68-.414z"/></svg> WhatsApp</a>
+            <a href="mailto:info@controventoquartu.com" aria-label="Email"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" width="20" height="20"><path d="M20 4H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 2v.01L12 13 4 6.01V6h16zm0 12H4V8.99l8 6.99 8-6.99V18z"/></svg> Email</a>
+          </div>
+        </div>
+        <div class="contact-map-col">
+          <div class="map-responsive">
+            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d1667.5926949191887!2d9.217207057449194!3d39.22771795191738!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x12e0cbab97dd43e5%3A0x2baf357891368390!2sControvento!5e0!3m2!1sit!2sit!4v1750926480615!5m2!1sit!2sit" width="100%" height="100%" style="border:0; min-height:220px;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+  <footer>
+    &copy; 2025 Sea Rental Boat di D.A. - Stabilimento Controvento | Powered by Riccardo Antonio Vitale
+  </footer>
+  <script>
+    // Hamburger menu toggle
+    const hamburger = document.getElementById('hamburger');
+    const navLinks = document.getElementById('navLinks');
+    hamburger.addEventListener('click', () => {
+      navLinks.classList.toggle('open');
+    });
+    // Chiudi menu al click su link (mobile UX)
+    navLinks.querySelectorAll('a').forEach(link => {
+      link.addEventListener('click', () => {
+        navLinks.classList.remove('open');
+      });
+    });
+    // Accessibilità: apri/chiudi con invio/space
+    hamburger.addEventListener('keydown', (e) => {
+      if (e.key === 'Enter' || e.key === ' ') {
+        navLinks.classList.toggle('open');
+      }
+    });
+    // Carosello immagini mobile
+    const carouselImgs = [
+      {src: 'IMG-20250626-WA0021.jpg', alt: 'Sup in acqua'},
+      {src: 'IMG-20250626-WA0023.jpg', alt: 'Vista mare sup'},
+      {src: 'IMG-20250626-WA0027.jpg', alt: 'Sup Poetto'},
+      {src: 'IMG-20250626-WA0011.jpg', alt: 'Sup gruppo'},
+      {src: 'Immagine WhatsApp 2025-06-25 ore 20.33.58_6d3e3227.jpg', alt: 'Sup WhatsApp 1'},
+      {src: 'Immagine WhatsApp 2025-06-25 ore 20.33.57_8478de64.jpg', alt: 'Sup WhatsApp 2'},
+      {src: 'Immagine WhatsApp 2025-06-25 ore 20.33.57_e219b93b.jpg', alt: 'Sup WhatsApp 3'},
+      {src: 'Immagine WhatsApp 2025-06-25 ore 20.33.56_5753bbcb.jpg', alt: 'Sup WhatsApp 4'},
+      {src: 'Immagine WhatsApp 2025-06-25 ore 20.33.56_80fe11b1.jpg', alt: 'Sup WhatsApp 5'}
+    ];
+    const carousel = document.getElementById('carousel');
+    if (carousel) {
+      const carouselImg = document.getElementById('carouselImg');
+      const dots = document.getElementById('carouselDots');
+      let idx = 0;
+      function showImg(i) {
+        idx = i;
+        carouselImg.classList.add('fade');
+        setTimeout(() => {
+          carouselImg.src = carouselImgs[i].src;
+          carouselImg.alt = carouselImgs[i].alt;
+          carouselImg.classList.remove('fade');
+        }, 200);
+        Array.from(dots.children).forEach((d, j) => d.classList.toggle('active', j === i));
+      }
+      // Dots
+      dots.innerHTML = '';
+      carouselImgs.forEach((img, i) => {
+        const dot = document.createElement('div');
+        dot.className = 'carousel-dot' + (i === 0 ? ' active' : '');
+        dot.onclick = () => showImg(i);
+        dots.appendChild(dot);
+      });
+      showImg(0);
+      // Touch swipe support
+      let startX = null;
+      carouselImg.addEventListener('touchstart', (e) => {
+        startX = e.touches[0].clientX;
+      });
+      carouselImg.addEventListener('touchend', (e) => {
+        if (startX === null) return;
+        let endX = e.changedTouches[0].clientX;
+        if (endX - startX > 40) showImg((idx - 1 + carouselImgs.length) % carouselImgs.length);
+        else if (startX - endX > 40) showImg((idx + 1) % carouselImgs.length);
+        startX = null;
+      });
+      // Mouse drag/scroll support
+      let dragStartX = null;
+      let dragging = false;
+      carouselImg.addEventListener('mousedown', (e) => {
+        dragStartX = e.clientX;
+        dragging = true;
+      });
+      document.addEventListener('mouseup', (e) => {
+        if (!dragging || dragStartX === null) return;
+        let dragEndX = e.clientX;
+        if (dragEndX - dragStartX > 40) showImg((idx - 1 + carouselImgs.length) % carouselImgs.length);
+        else if (dragStartX - dragEndX > 40) showImg((idx + 1) % carouselImgs.length);
+        dragging = false;
+        dragStartX = null;
+      });
+      carouselImg.addEventListener('mousemove', (e) => {
+        // Prevent unwanted selection while dragging
+        if (dragging) e.preventDefault();
+      });
+    }
+    // Fade-in animation per le sezioni
+    document.addEventListener('DOMContentLoaded', function() {
+      const sections = document.querySelectorAll('.section');
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('visible');
+          }
+        });
+      }, { threshold: 0.15 });
+      sections.forEach(section => observer.observe(section));
+    });
+  </script>
+</body>
+</html>
